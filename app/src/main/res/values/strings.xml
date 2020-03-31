@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">In-App Purchase Demo</string>
+
+    <string name="consumable">Consumable Product</string>
+    <string name="non_consumable">Non-Consumable Products</string>
+    <string name="buy_coin">Buy 25 Coins</string>
+    <string name="collection">Unlocked Collection</string>
+    <string name="unlock_ring">Ring</string>
+    <string name="unlock_necklace">Necklace</string>
+    <string name="unlock_crown">Crown</string>
+    <string name="bought">Bought</string>
+
+</resources>
