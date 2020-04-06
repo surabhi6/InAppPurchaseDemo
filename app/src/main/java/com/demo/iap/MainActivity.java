@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements IAPHelper.IAPHelp
     final String NECKLACE = "nc_necklace";
     final String CROWN = "nc_crown";
     final String COIN = "coin";
-    final String TEST = "android.test.purchased";
+    final String TEST = "android.test.purchased"; //This id can be used for testing purpose
     private List<String> skuList = Arrays.asList(COIN, RING, NECKLACE, CROWN, TEST);
 
     private SharedPreferences pref;
