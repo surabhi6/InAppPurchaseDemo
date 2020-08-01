@@ -25,6 +25,7 @@ import java.util.List;
 public class IAPHelper {
 
     private String TAG = IAPHelper.class.getSimpleName();
+
     private Context context;
     private BillingClient mBillingClient;
     private IAPHelperListener IAPHelperListener;
@@ -148,7 +149,8 @@ public class IAPHelper {
     }
 
     public void acknowledgePurchase(Purchase purchase) {
-        if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+        if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED
+                && isSignatureValid(purchase)) {
 
             //This is for Consumable product
             AcknowledgePurchaseParams acknowledgePurchaseParams = AcknowledgePurchaseParams.newBuilder()
@@ -167,7 +169,8 @@ public class IAPHelper {
     }
 
     public void consumePurchase(Purchase purchase) {
-        if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+        if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED
+                && isSignatureValid(purchase)) {
 
             //This is for Consumable product
             ConsumeParams consumeParams = ConsumeParams.newBuilder()
@@ -185,6 +188,9 @@ public class IAPHelper {
         }
     }
 
+    private boolean isSignatureValid(Purchase purchase) {
+        return Security.verifyPurchase(Security.BASE_64_ENCODED_PUBLIC_KEY, purchase.getOriginalJson(), purchase.getSignature());
+    }
 
     /**
      * Call this method once you are done with this BillingClient reference.

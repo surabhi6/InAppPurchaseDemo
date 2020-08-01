@@ -45,6 +45,9 @@ public class Security {
     private static final String KEY_FACTORY_ALGORITHM = "RSA";
     private static final String SIGNATURE_ALGORITHM = "SHA1withRSA";
 
+    //This you will get from Services & API in your application console
+    public static String BASE_64_ENCODED_PUBLIC_KEY = "your_public_key_that you_get_from_google_play_console";
+
     /**
      * Verifies that the data was signed with the given signature, and returns
      * the verified purchase. The data is in JSON format and signed

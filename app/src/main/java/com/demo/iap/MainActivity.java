@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements IAPHelper.IAPHelp
 
     private String TAG = MainActivity.class.getSimpleName();
 
-    //This you will get from Services & API in your application console
-    private String base64EncodedPublicKey="your_public_key_that you_get_from_google_play_console";
 
     IAPHelper iapHelper;
     HashMap<String, SkuDetails> skuDetailsHashMap = new HashMap<>();
@@ -120,14 +118,8 @@ public class MainActivity extends AppCompatActivity implements IAPHelper.IAPHelp
 
     @Override
     public void onPurchaseCompleted(Purchase purchase) {
-        if(Security.verifyPurchase(base64EncodedPublicKey, purchase.getOriginalJson(), purchase.getSignature())){
-            //Purchase is completed, you can update your local database and UI here
-            Toast.makeText(getApplicationContext(), "Purchase Successful", Toast.LENGTH_SHORT).show();
-            updatePurchase(purchase);
-        }
-        else{
-            Toast.makeText(getApplicationContext(), "Purchase verification failed", Toast.LENGTH_SHORT).show();
-        }
+        Toast.makeText(getApplicationContext(), "Purchase Successful", Toast.LENGTH_SHORT).show();
+        updatePurchase(purchase);
     }
 
     private void updatePurchase(Purchase purchase){
